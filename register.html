@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="login_styles.css" />
+    <script>
+      window.history.replaceState(null, null, window.location.href);
+
+      window.onpopstate = function () {
+        window.location.href = "index.html";
+      };
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form id="register-form">
+        <h1>Register</h1>
+        <div class="input-box">
+          <input
+            type="text"
+            id="reg-username"
+            placeholder="Username"
+            required
+          />
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="input-box">
+          <input type="email" id="reg-email" placeholder="Email" required />
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="input-box">
+          <input
+            type="password"
+            id="reg-password"
+            placeholder="Password"
+            required
+          />
+          <i class="fa-solid fa-lock"></i>
+        </div>
+
+        <div class="remember-forgot">
+          <label><input type="checkbox" />Remember me</label>
+          <a href="#">Forgot password</a>
+        </div>
+
+        <div id="reg-message" style="color: red; display: none"></div>
+
+        <button class="btn" type="submit">Register</button>
+
+        <div class="register-link">
+          <p>
+            Already have an account?
+            <a href="login.html" style="text-decoration: dashed">Login</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </body>
+
+  <script
+    src="https://kit.fontawesome.com/8bdf8c69c6.js"
+    crossorigin="anonymous"
+  ></script>
+
+  <script>
+    document
+      .getElementById("register-form")
+      .addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        let username = document.getElementById("reg-username").value;
+        let email = document.getElementById("reg-email").value;
+        let password = document.getElementById("reg-password").value;
+        let message = document.getElementById("reg-message");
+
+        let response = await fetch("http://localhost:3000/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, email, password }),
+        });
+
+        let result = await response.json();
+        message.style.display = "block";
+        message.textContent = result.message;
+        message.style.color = result.status === "error" ? "red" : "green";
+      });
+  </script>
+</html>
