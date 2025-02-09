@@ -12,6 +12,10 @@
   max-width: 1200px;
 }
 
+.bottom-bar {
+  display: none;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -217,8 +221,8 @@ nav {
 
 .events-card {
   position: relative;
-  width: 260px;
-  height: 370px;
+  width: 230px;
+  height: 330px;
 }
 
 .events-card img {
@@ -385,6 +389,22 @@ nav {
 
   .events h1 {
     font-size: 25px;
+  }
+
+  body {
+    position: relative;
+  }
+
+  .bottom-bar {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #363a43; /* Цвет фона */
+    color: white; /* Цвет текста */
+    padding: 10px 20px; /* Отступы */
+    text-align: center; /* Выравниваем текст по центру */
+    z-index: 999999; /* Устанавливаем поверх других элементов */
   }
 }
 
