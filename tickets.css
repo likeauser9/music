@@ -1,8 +1,27 @@
+@font-face {
+  font-family: "Monsterrat";
+  src: url("/assets/fonts/Montserrat-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/assets/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/assets/fonts/Comfortaa-Regular.ttf");
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
+}
+
+body {
+  font-family: "Comfortaa", sans-serif;
 }
 
 .wrapper {
@@ -26,6 +45,13 @@
   z-index: 9999;
   transform: translateY(100%); /* Прячем за экраном */
   transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.bottom-bar-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .mobile-nav {
@@ -428,6 +454,11 @@
     align-items: center;
   }
 
+  .bottom-bar-info-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
   .events-cards {
     flex-wrap: wrap;
   }
@@ -450,6 +481,18 @@
     gap: 20px;
     list-style: none;
     padding: 10px 10px;
+  }
+}
+
+@media (max-width: 660px) {
+  .bottom-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bottom-bar-info {
+    display: none;
   }
 }
 
@@ -483,5 +526,16 @@
 
   .footer-bottom {
     display: none;
+  }
+}
+
+@media (max-width: 440px) {
+  .bottom-bar-price {
+    display: block;
+    width: 100%;
+  }
+
+  .poster-right-price-btn {
+    margin-top: 10px;
   }
 }
